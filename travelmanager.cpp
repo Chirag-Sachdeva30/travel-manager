@@ -13,8 +13,8 @@ protected:
 public:
     managemenu()
     {
-
-        cout<<"\n\n\n\n\n\n\n\n\nEnter your name to continue as an admin\n\n\n";
+        system("color E6");
+        cout<<"\n\n\n\n\n\n\t\t\tEnter your name to continue as an admin\n\n\t\t\t\t\t";
         for(int i=5;i>0;i--)
         {
             cin>>username;
@@ -25,7 +25,7 @@ public:
                     return;
                     }
             else
-            cout<<"admin not detected\n"<<i-1<<" trials left\n"<<endl;
+            cout<<"\n\n\n\n\n\n\t\t\tadmin not detected. "<<i-1<<" trials left\n\n\t\t\t\t\t";
         }
         cout<<"the system has been locked for security reasons\n";
         Sleep(2000);
@@ -101,7 +101,7 @@ class cabs
          cout<<"1.Rent a standard Cab -> 1$ per mile\n";
          cout<<"2.Rent a Luxury Cab->1.5$ per mile\n\n";
 
-         cout<<"chose your cab : 1<->Standard  2<->Luxury\n";
+         cout<<"chose your cab : 1<->Standard     2<->Luxury\n";
          cin>>cabchoice ;
          if(cabchoice!=1 && cabchoice!=2)
          {
@@ -125,7 +125,7 @@ class cabs
              currcost=kms*1.5;
          }
 
-         cout<<"Your tour cost is calculated to be: "<<currcost<< "$\n";
+         cout<<"tour cost is calculated to be: "<<currcost<< "$\n";
          cout<<"press 1 to hire this cab or press 2 to select another cab\n";
          cin>>hirecab;
 
@@ -136,10 +136,10 @@ class cabs
              Sleep(2000);
              finalcost=currcost;
              if(cabchoice==1)
-             cout<<"\nYou have successfully hired a standard cab for "<<kms<<" kms\n";
+             cout<<"\n successfully hired a standard cab for "<<kms<<" kms\n";
              else
-            cout<<"\nYou have successfully hired a luxury cab for "<<kms<<" kms\n";
-             cout<<"\ngo to menu and generate your reciept or book a hotel too\n";
+            cout<<"\nsuccessfully hired a luxury cab for "<<kms<<" kms\n";
+             cout<<"\ngo to menu to generate reciept or book a hotel\n";
              cout<<".........press any key to continue\n";
              getch();
              system("CLS");
@@ -179,16 +179,16 @@ class booking
             cout<<i+1<<".  hotel "<<hotelNo[i]<<" price: "<<priceNo[i]<<endl<<endl;
 
         cout<<"currently we collaborated with above hotels!\n";
-        cout<<"Enter no. of hotel you want to select\n";
+        cout<<"Enter hotel no. which you want to book\n";
         cin>>choicehotel;
         system("CLS");
         if(choicehotel==1)
         {
-            cout<<"welcome to the Hotel Avendra! we knew you would select the first option (winks)\n";
+            cout<<"welcome to the Hotel Avendra! the tourist's companion\n";
         }
         else if(choicehotel==2)
         {
-            cout<<"Welcome.....You are at hotel Abhinandan! \n";
+            cout<<"greeating and welcomes.....as you are at hotel Abhinandan! \n";
         }
         else if(choicehotel==3)
         {
@@ -203,7 +203,7 @@ class booking
         }
         cout<<"Enter the no of days of stay\n";
         cin>>days;
-        cout<<"Your total cost of stay is calculated to be "<<days*priceNo[choicehotel-1]<<endl;
+        cout<<"total cost of stay is calculated to be "<<days*priceNo[choicehotel-1]<<endl;
         cout<<"press 1 to book the deal , press 2 to book any other hotel\n";
         cin>>bookhotel;
 
@@ -214,8 +214,8 @@ class booking
              Sleep(2000);
              cost=days*priceNo[choicehotel-1];
 
-             cout<<"\nYou have successfully hired hotel "<<hotelNo[choicehotel-1]<< " for "<<days<<" days\n";
-             cout<<"\ngo to menu and take the reciept\n";
+             cout<<"\nwe have successfully booked hotel "<<hotelNo[choicehotel-1]<< " for "<<days<<" days\n";
+             cout<<"\ngo to menu to hire a cab/take the reciept\n";
              cout<<"press any key to continue\n";
              getch();
          }
@@ -266,7 +266,7 @@ class charges : public customer,cabs,booking
         char a[999];
         if(!infile)
         {
-            cout<<"No records exist as of now\n";
+            cout<<"Error\n\n";
         }
         while(!infile.eof())
         {
@@ -288,9 +288,9 @@ void menu()
     cout<<"\t\t\t\t hotel management-> press 3\n";
     cout<<"\t\t\t\t Charges and bills-> press 4\n";
     cout<<"\t\t\t\t Exit-> rest of the keys\n\n\n";
-    cout<<"note->if you are a new user, make sure to register user details\n\n\n";
+    cout<<"note->make sure to register user details for every booking\n\n\n";
 
-    cout<<"Enter your choice: \n";
+    cout<<"Enter your choice: ";
     fflush(stdin);
     cin>>mainchoice;
     system("CLS");
@@ -343,7 +343,7 @@ void menu()
         if(choice==1)
         {
              a5.printbill();
-              cout<<"please wait while we generate the reciept..................\n";
+              cout<<"please wait while the reciept is being generated..................\n";
               Sleep(2000);
               system("CLS");
               cout<<"Reciept generated successfully in the billbox\n";
