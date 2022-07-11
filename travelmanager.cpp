@@ -102,6 +102,7 @@ class cabs
          cout<<"2.Rent a Luxury Cab->1.5$ per mile\n\n";
 
          cout<<"chose your cab : 1<->Standard     2<->Luxury\n";
+         string cabtype;
          cin>>cabchoice ;
          if(cabchoice!=1 && cabchoice!=2)
          {
@@ -119,10 +120,12 @@ class cabs
          if(cabchoice==1)
          {
              currcost=kms*1;
+             cabtype="Standard";
          }
          else if(cabchoice==2)
          {
              currcost=kms*1.5;
+             cabtype="Luxury";
          }
 
          cout<<"tour cost is calculated to be: "<<currcost<< "$\n";
@@ -132,13 +135,41 @@ class cabs
          system("CLS");
          if(hirecab==1)
          {
+             int prev_id;
+             long long prev_mob;
+             string prev_customer;
+             ifstream infile("customers.txt");
+             while(!infile.eof())
+             {
+                 infile>>prev_id>>prev_customer>>prev_mob;
+             }
+                 cout<<"Booking will be done with the following attributes :\n";
+                 cout<<"---------------------------------------------------------\n";
+                 cout<<"\t\t\tname: "<<prev_customer<<endl;
+                 cout<<"\t\t\tid: "<<prev_id<<endl;
+                 cout<<"\t\t\tmobile no : "<<prev_mob<<endl;
+                 cout<<"\t\t\tcab : "<<cabtype<<endl;
+                 cout<<"\t\t\tkms : "<<kms<<endl;
+                 cout<<"---------------------------------------------------------\n";
+                 cout<<"\t\t\tare you sure you want to book cab with the following details?"<<endl;
+                 cout<<"\t\t\tfor yes, press 1......for no, press any other key\n";
+                 int n;
+                 cin>>n;
+                 if(n!=1)
+                 {
+                     system("CLS");
+                    cout<<"we deeply regret that the booking was unsuccessful!\n\n\n if user details were wrong,   please register user details in customer management\n";
+                    Sleep(3000);
+                    system("CLS");
+                    menu();
+                 }
+            system("CLS");
              cout<<"Please wait while the booking is taking place........\n";
              Sleep(2000);
              finalcost=currcost;
-             if(cabchoice==1)
-             cout<<"\n successfully hired a standard cab for "<<kms<<" kms\n";
-             else
-            cout<<"\nsuccessfully hired a luxury cab for "<<kms<<" kms\n";
+
+             cout<<"\n successfully hired a "<<cabtype<<" cab for "<<kms<<" kms\n";
+
              cout<<"\ngo to menu to generate reciept or book a hotel\n";
              cout<<".........press any key to continue\n";
              getch();
@@ -210,6 +241,34 @@ class booking
          system("CLS");
          if(bookhotel==1)
          {
+              int prev_id;
+             long long prev_mob;
+             string prev_customer;
+             ifstream infile("customers.txt");
+             while(!infile.eof())
+             {
+                 infile>>prev_id>>prev_customer>>prev_mob;
+             }
+                 cout<<"Booking will be done with the following attributes :\n";
+                 cout<<"---------------------------------------------------------\n";
+                 cout<<"\t\t\tname: "<<prev_customer<<endl;
+                 cout<<"\t\t\tid: "<<prev_id<<endl;
+                 cout<<"\t\t\tmobile no : "<<prev_mob<<endl;
+                 cout<<"\t\t\thotel : "<<hotelNo[choicehotel-1]<<endl;
+                 cout<<"\t\t\tdays of stay : "<<days<<endl;
+                 cout<<"---------------------------------------------------------\n";
+                 cout<<"\t\t\tare you sure you want to book hotel with the following details?"<<endl;
+                 cout<<"\t\t\tfor yes, press 1......for no, press any other key\n";
+                 int n;
+                 cin>>n;
+                 if(n!=1)
+                 {
+                     system("CLS");
+                    cout<<"we deeply regret that the booking was unsuccessful!\n\n\n if user details were wrong,   please register user details in customer management\n";
+                    Sleep(3000);
+                    system("CLS");
+                    menu();
+                 }
              cout<<"Please wait while the booking is taking place........\n";
              Sleep(2000);
              cost=days*priceNo[choicehotel-1];
