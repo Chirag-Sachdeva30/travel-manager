@@ -43,8 +43,14 @@ public:
 
     void getdetails()
     {
-        cout<<"customer ID : ";
-        cin>>id;
+        ifstream idfile("idno.txt");
+       if(idfile)
+       idfile>>id;
+       idfile.close();
+       ofstream file("idno.txt",ios_base::trunc);
+        file<<id+1<<endl;
+        file.close();
+        cout<<"Your customer id has been generated as: "<<id<<endl;
         getchar();
         cout<<"Enter name : ";
         getline(cin,name);
@@ -76,7 +82,7 @@ public:
 
 };
 
-     int customer:: id=0;
+     int customer:: id=1;
 
 
 class cabs
@@ -285,7 +291,7 @@ void menu()
     cout<<"note->if you are a new user, make sure to register user details\n\n\n";
 
     cout<<"Enter your choice: \n";
-    getchar();
+    fflush(stdin);
     cin>>mainchoice;
     system("CLS");
     customer a2;
@@ -348,7 +354,6 @@ void menu()
         {
             a5.showbills();
             cout<<"\n\npress any key to exit\n";
-            getchar();
             getch();
         }
         else
