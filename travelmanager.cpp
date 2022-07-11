@@ -191,7 +191,9 @@ class booking
         else
         {
             cout<<"Invalid choice!...redirecting to main menu\n";
-            //menu();
+            Sleep(2000);
+            system("CLS");
+            menu();
         }
         cout<<"Enter the no of days of stay\n";
         cin>>days;
