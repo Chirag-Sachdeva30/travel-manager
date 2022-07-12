@@ -63,6 +63,8 @@ public:
         outfile.close();
 
         cout<<"\nSAVED\n";
+        Sleep(2000);
+        system("CLS");
     }
     void showdetails()
     {
@@ -96,6 +98,7 @@ class cabs
 
      void cabdetails()
      {
+         m:
          cout<<"we colaborated with smartest, safest and fastest cab services around the country\n\n";
          cout<<"\n---------------------Chirag Cabs------------------------\n\n";
          cout<<"1.Rent a standard Cab -> 1$ per mile\n";
@@ -106,10 +109,8 @@ class cabs
          cin>>cabchoice ;
          if(cabchoice!=1 && cabchoice!=2)
          {
-            cout<<"invalid input! redirecting to previous menu\n";
-             Sleep(2000);
-             system("CLS");
-             menu();
+            cout<<"invalid input!\n";
+
              return;
          }
 
@@ -132,13 +133,13 @@ class cabs
          cout<<"press 1 to hire this cab or press 2 to select another cab\n";
          cin>>hirecab;
 
-         system("CLS");
          if(hirecab==1)
          {
              int prev_id;
              long long prev_mob;
              string prev_customer;
              ifstream infile("customers.txt");
+             system("CLS");
              while(!infile.eof())
              {
                  infile>>prev_id>>prev_customer>>prev_mob;
@@ -160,8 +161,13 @@ class cabs
                      system("CLS");
                     cout<<"we deeply regret that the booking was unsuccessful!\n\n\n if user details were wrong,   please register user details in customer management\n";
                     Sleep(3000);
-                    system("CLS");
-                    menu();
+                    for(int i=3;i>0;i--)
+                    {
+                        system("CLS");
+                        cout<<"redirecting in "<<i<<endl;
+                        Sleep(1000);
+                    }
+                    return;
                  }
             system("CLS");
              cout<<"Please wait while the booking is taking place........\n";
@@ -174,20 +180,20 @@ class cabs
              cout<<".........press any key to continue\n";
              getch();
              system("CLS");
-             menu();
              return ;
          }
 
          else if(hirecab==2)
          {
-             cabdetails();
+             system("CLS");
+             goto m;
          }
          else
          {
-             cout<<"invalid input! redirecting to previous menu\n";
+             cout<<"invalid input!..try again\n";
              Sleep(2000);
              system("CLS");
-             cabdetails();
+             goto m;
          }
      }
 };
@@ -204,6 +210,7 @@ class booking
 
     void hotels()
     {
+        m:
         string hotelNo[]={"Avendra","Abhinandan","greentop"};
         int priceNo[]={1000,2000,3000};
         for(int i=0;i<3;i++)
@@ -216,21 +223,24 @@ class booking
         if(choicehotel==1)
         {
             cout<<"welcome to the Hotel Avendra! the tourist's companion\n";
+            cout<<"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n\n";
         }
         else if(choicehotel==2)
         {
-            cout<<"greeating and welcomes.....as you are at hotel Abhinandan! \n";
+            cout<<"greeting and welcomes.....as you are at hotel Abhinandan! \n";
+            cout<<"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n\n";
         }
         else if(choicehotel==3)
         {
             cout<<"Wecome to greentop!...the pioneer in the art of hotel innovations\n";
+            cout<<"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n\n";
         }
         else
         {
-            cout<<"Invalid choice!...redirecting to main menu\n";
+            cout<<"Invalid choice!...\n";
             Sleep(2000);
             system("CLS");
-            menu();
+            return;
         }
         cout<<"Enter the no of days of stay\n";
         cin>>days;
@@ -266,9 +276,14 @@ class booking
                      system("CLS");
                     cout<<"we deeply regret that the booking was unsuccessful!\n\n\n if user details were wrong,   please register user details in customer management\n";
                     Sleep(3000);
-                    system("CLS");
-                    menu();
-                 }
+                    for(int i=3;i>0;i--)
+                    {
+                        system("CLS");
+                        cout<<"redirecting in "<<i<<endl;
+                        Sleep(1000);
+                    }
+                    return;
+                    }
              cout<<"Please wait while the booking is taking place........\n";
              Sleep(2000);
              cost=days*priceNo[choicehotel-1];
@@ -281,19 +296,14 @@ class booking
 
          else if(bookhotel==2)
          {
-             hotels();
+             goto m;
          }
          else
          {
-             cout<<"invalid input! redirecting to previous menu\n";
-             Sleep(2000);
              system("CLS");
-             hotels();
+             cout<<"invalid input!\n";
          }
-         cout<<"redirecting to main menu\n";
-             Sleep(2000);
              system("CLS");
-             menu();
              return;
     }
 
@@ -339,7 +349,7 @@ class charges : public customer,cabs,booking
 
 void menu()
 {
-
+    m:
     int mainchoice;
     cout<<"\t\t_______________Chirag Travels Welcomes You onboard_________________\n\n\n";
     cout<<"\t\t\t\t customer management-> press 1\n";
@@ -370,19 +380,17 @@ void menu()
         if(choice==1)
         {
             a2.getdetails();
+            goto m;
         }
         else if(choice==2)
         {
             a2.showdetails();
-              cout<<"\n\npress any key to exit\n";
-              getchar();
+              cout<<"\n\npress any key to exit";
              getch();
         }
         else
         {
-            cout<<"Invalid input! redirecting to menu\n";
-            Sleep(2000);
-            menu();
+            cout<<"Invalid input!\n";
         }
     }
     else if (mainchoice==2)
@@ -406,20 +414,18 @@ void menu()
               Sleep(2000);
               system("CLS");
               cout<<"Reciept generated successfully in the billbox\n";
-              cout<<"press any key to continue\n";
+              cout<<"press any key to continue";
               getch();
         }
         else if(choice==2)
         {
             a5.showbills();
-            cout<<"\n\npress any key to exit\n";
+            cout<<"\n\npress any key to exit";
             getch();
         }
         else
         {
-            cout<<"Invalid input! redirecting to main\n";
-            Sleep(2000);
-            menu();
+            cout<<"Invalid input! \n";
         }
     }
    else
@@ -429,10 +435,10 @@ void menu()
            system("CLS");
            exit(0);
    }
-        cout<<"redirecting to the main menu........\n";
+        cout<<"\nredirecting to the main menu........\n";
         Sleep(2000);
         system("CLS");
-        menu();
+        goto m;
 }
 
 
