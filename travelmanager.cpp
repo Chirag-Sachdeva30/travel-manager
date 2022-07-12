@@ -106,7 +106,7 @@ class cabs
 
          cout<<"chose your cab : 1<->Standard     2<->Luxury\n";
          string cabtype;
-         cin>>cabchoice ;
+         cabchoice=getch()-'0';
          if(cabchoice!=1 && cabchoice!=2)
          {
             cout<<"invalid input!\n";
@@ -131,7 +131,7 @@ class cabs
 
          cout<<"tour cost is calculated to be: "<<currcost<< "$\n";
          cout<<"press 1 to hire this cab or press 2 to select another cab\n";
-         cin>>hirecab;
+         hirecab=getch()-'0';
 
          if(hirecab==1)
          {
@@ -155,7 +155,7 @@ class cabs
                  cout<<"\t\t\tare you sure you want to book cab with the following details?"<<endl;
                  cout<<"\t\t\tfor yes, press 1......for no, press any other key\n";
                  int n;
-                 cin>>n;
+                 n=getch()-'0';
                  if(n!=1)
                  {
                      system("CLS");
@@ -218,7 +218,7 @@ class booking
 
         cout<<"currently we collaborated with above hotels!\n";
         cout<<"Enter hotel no. which you want to book\n";
-        cin>>choicehotel;
+        choicehotel=getch()-'0';
         system("CLS");
         if(choicehotel==1)
         {
@@ -246,7 +246,7 @@ class booking
         cin>>days;
         cout<<"total cost of stay is calculated to be "<<days*priceNo[choicehotel-1]<<endl;
         cout<<"press 1 to book the deal , press 2 to book any other hotel\n";
-        cin>>bookhotel;
+        bookhotel=getch()-'0';
 
          system("CLS");
          if(bookhotel==1)
@@ -270,7 +270,7 @@ class booking
                  cout<<"\t\t\tare you sure you want to book hotel with the following details?"<<endl;
                  cout<<"\t\t\tfor yes, press 1......for no, press any other key\n";
                  int n;
-                 cin>>n;
+                 n=getch()-'0';
                  if(n!=1)
                  {
                      system("CLS");
@@ -361,7 +361,7 @@ void menu()
 
     cout<<"Enter your choice: ";
     fflush(stdin);
-    cin>>mainchoice;
+    mainchoice=getch()-'0';
     system("CLS");
     customer a2;
     cabs a3;
@@ -375,7 +375,7 @@ void menu()
 
         cout<<"enter choice: ";
         int choice;
-        cin>>choice;
+        choice=getch()-'0';
         system("CLS");
         if(choice==1)
         {
@@ -405,7 +405,7 @@ void menu()
 
         cout<<"enter choice: ";
         int choice;
-        cin>>choice;
+        choice=getch()-'0';
         system("CLS");
         if(choice==1)
         {
